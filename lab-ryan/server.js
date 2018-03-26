@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/api', userRouter); 
 app.use('/api', textRouter);
 
-const server = app.listen(PORT, () => console.log('listening on: http://localhost', PORT));
+// const server = 
+app.listen(PORT, () => console.log('listening on: http://localhost', PORT));
 
-server.isRunning = true;
+// server.isRunning = true;

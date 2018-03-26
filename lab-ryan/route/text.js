@@ -3,12 +3,14 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
+const router = express.Router();
+
 const Text = require('../model/textMessage.js');
 const User = require('../model/user.js')
 const getAuth = require('../lib/authorization.js');
 // const bearerMiddleWare = require('../lib/bearer-auth-middleware');
 
-const router = express.Router();
+
 
 
 router.get('/', (req, res) => {

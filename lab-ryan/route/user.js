@@ -3,10 +3,12 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
+const router = express.Router();
+
 const User = require('../model/user');
 const getAuth = require('../lib/authorization');
 
-const router = express.Router();
+
 
 
 router.get('/', (req, res) => {
