@@ -1,4 +1,4 @@
-# Lab 16 Bearer Authorization
+# Lab 17 Bearer Authorization
 
 ## Created by Ryan Johnson
 
