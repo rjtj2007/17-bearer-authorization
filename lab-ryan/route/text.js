@@ -3,17 +3,20 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 
-const User = require('../model/user');
-const getAuth = require('../lib/authorization');
+const Text = require('../model/textMessage.js');
+const User = require('../model/user.js')
+const getAuth = require('../lib/authorization.js');
+// const bearerMiddleWare = require('../lib/bearer-auth-middleware');
 
 const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    User.find()
+    Text.find()
     .then(results => {
         res.send(results);
-    });
+    })
+    .catch(err => res.send(err.message));
 });
 
 router.get('/signin', (req, res) => {
@@ -36,16 +39,16 @@ router.get('/signin', (req, res) => {
         .catch((err) => {
             res.sendStatus(401)
         });
-
     })
     .catch((err) => res.send(err.message));
 });
 
 
-router.post('/signup', express.json(), (req, res) => {
-    User.create(req.body)
-    .then(user => {
-        res.sendStatus(200);
+router.post('/text', express.json(), (req, res) => {
+    Text.create(req.body)
+    .save()
+    .then((text) => {
+        res.send(text);
     })
     .catch(err => res.sendStatus(400));
 });

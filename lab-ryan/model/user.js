@@ -1,9 +1,10 @@
 'use strict';
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 //User Model
-const schema = new mongoose.Schema({
+const User = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -20,12 +21,13 @@ const schema = new mongoose.Schema({
     }
 });
 
-schema.methods.checkPassword = function (rawPassword) {
+User.methods.checkPassword = function (rawPassword) {
     return bcrypt.compare(rawPassword, this.password);
 }
 
-schema.pre('save', function (next) {
+User.pre('save', function (next) {
     if (this.isNew) {
+        console.log('New user: ', this);
 
         bcrypt.hash(this.password, 10).then(hash => {
             this.password = hash;
@@ -37,4 +39,4 @@ schema.pre('save', function (next) {
     }
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('User', User);
