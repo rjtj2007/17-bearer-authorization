@@ -3,8 +3,9 @@ let jwt = require('jsonwebtoken');
 const User = require('../model/user.js');
 
 function bearerAuth(req, res, next) {
-  var authHeader = req.headers.authorization;
-  var token = authHeader.split('Bearer ')[1];
+  let authHeader = req.headers.authorization;
+  let token = authHeader.split('Bearer ')[1];
+  console.log('token', token)
 
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (err) {
@@ -19,6 +20,6 @@ function bearerAuth(req, res, next) {
       })
       .catch(err => res.send(err.message));
   });
-}
+};
 
 module.exports = { bearerAuth };
