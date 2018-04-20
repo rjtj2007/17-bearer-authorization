@@ -6,3 +6,8 @@
 
 
 ## Application Use
+
+
+
+Refactored with demo code and Alicia's help
+Still need to test and finish barer authorization works
