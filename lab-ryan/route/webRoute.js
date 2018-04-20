@@ -6,7 +6,7 @@ const barerAuth = require('../lib/bearer-auth-middleware.js');
 
 // const router = express.Router();
 
-webRouter.route('/web')
+webRouter.route('/web') 
 
 .get(barerAuth, (req, res) => {
     console.log('UserId:', req.user);
